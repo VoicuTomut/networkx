@@ -1,0 +1,7 @@
+README.md
+setup.py
+networkx/__init__.py
+networkx.egg-info/PKG-INFO
+networkx.egg-info/SOURCES.txt
+networkx.egg-info/dependency_links.txt
+networkx.egg-info/top_level.txt
