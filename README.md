@@ -5,8 +5,11 @@ An app designed to ensure trust between couriers and package recipients.
 
 ## 🚀 Demo
 For a detailed walkthrough, check out our presentation on Canva:  
+
  **Canva:** [Check it out here](https://www.canva.com/design/DAGgvwtPrMA/q8wfSf0MzZcYXvbUBQ4M3Q/edit?utm_content=DAGgvwtPrMA&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
- **PDF:**  [CheckPoint.pdf]()
+
+ **PDF:**  [CheckPoint.pdf](https://github.com/VoicuTomut/networkx/blob/main/ChekPoint.pdf)
+
 📽 **Video:**  https://github.com/VoicuTomut/networkx/blob/main/Demovideo.mp4
 ---
 
