@@ -1,10 +1,9 @@
 import gradio as gr
 import pandas as pd
 import numpy as np
+import hashlib
 
-
-from networkx import  qr_confirm, extract_location_coordinates, check_coordinates, sim_change_chack
-from networkx.chek_phone_number import verify_phone_number
+from networkx import  qr_confirm, extract_location_coordinates, check_coordinates
 
 #Ge the delivery database:
 # Read the CSV file
@@ -51,14 +50,8 @@ def owner_check(order_id, owner_code):
 
     # todo use verification form nokia:
     # w edid not manage ot make th eapi to completly work
-    # verify=verify_phone_number
     #pass
 
-    # Chek last sweem swapp
-    sw = sim_change_chack(client_phone)
-
-    if sw:
-        return " swim swapp to recent"
 
 # Update the delivery data base by user:
 def filter_by_courier(courier_phone):
@@ -154,40 +147,9 @@ def deliver(order_id):
 
 # Define the Gradio interface
 with gr.Blocks(title="Order Management System") as app:
-    gr.Markdown("# Check Point")
+    gr.Markdown("# Check Point code ")
+    gr.Markdown("# 2056 ")
 
-    with gr.Tabs():
-        # First Tab - Order Management
-        with gr.Tab("Order Management"):
-            with gr.Column():
-                phone_number_courier = gr.Textbox(label="Phone Number curier:",placeholder="+40...")
-                get_delivery_list= gr.Button("Colect deliveries")
-                # Add DataFrame viewer (DataTable component)
-                deliveries_table = gr.Dataframe(
-                    headers=["OrderID", "Location", "Client Phone", "Status", "Time"],
-                    datatype=["str", "str", "str", "str", "str"],
-                    interactive=False,
-                    label="Deliveries List"
-                )
-                order_id = gr.Textbox(label="OrderID", placeholder="07G")
-                order_location = gr.Textbox(label="Location", placeholder="Barcelona")
-                phone_number_client = gr.Textbox(label="Phone Number Client:",placeholder="Phone Number")
-                delivery_status = gr.Textbox(placeholder="InProcess", label="Status")
-                deliver_button = gr.Button("Deliver")
-
-                owner_code = gr.Textbox(placeholder="Owner code:", label="Code")
-                deliver_check_button = gr.Button("Check  Code!")
-
-                checkQR =gr.Image(
-                label="Scan QR Code",
-                type="numpy",)
-                # delivery_status_history = gr.Textbox(placeholder="InProcess", label="Status history")
-
-            deliver_button.click(fn=deliver, inputs=[order_id], outputs=[order_location, phone_number_client, delivery_status, checkQR, ])
-            get_delivery_list.click(fn=filter_by_courier, inputs=[phone_number_courier], outputs=[deliveries_table])
-
-
-            deliver_check_button.click(fn=owner_check, inputs=[order_id, owner_code], outputs=[delivery_status])
 
 
 

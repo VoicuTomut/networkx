@@ -3,6 +3,8 @@ import urllib.parse
 
 APIK="3aa9d376cfmsh16446717213dd03p1e3dfdjsn0c3cc2207d6f"
 
+
+
 def get_client_credentials():
     url = "https://nac-authorization-server.p-eu.rapidapi.com/auth/clientcredentials"
     headers = {
@@ -105,6 +107,9 @@ def verify_phone_number(access_token, phone_number):
         return "Unknown device ID."
     else:
         return f"Error verifying phone number: {response.text}"
+
+
+
 
 
 def main():

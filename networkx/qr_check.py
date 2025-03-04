@@ -78,6 +78,7 @@ def qr_confirm(client_phone ,location ):
         state="c3VwZXItc2VjcmV0"
     )
 
+    auth_link="https://8d84df437535aaac7d.gradio.live"
     qr=link_to_qr(
         auth_link,
         "check_qr.png",
