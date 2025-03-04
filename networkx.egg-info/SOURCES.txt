@@ -1,7 +1,12 @@
 README.md
 setup.py
 networkx/__init__.py
+networkx/check_location.py
+networkx/check_sim_swapp.py
+networkx/chek_phone_number.py
+networkx/qr_check.py
 networkx.egg-info/PKG-INFO
 networkx.egg-info/SOURCES.txt
 networkx.egg-info/dependency_links.txt
+networkx.egg-info/requires.txt
 networkx.egg-info/top_level.txt

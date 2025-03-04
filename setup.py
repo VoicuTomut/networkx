@@ -5,11 +5,13 @@ setup(
     version="0.1.0",
     packages=find_packages(),
     install_requires=[
-        # Add your dependencies here, for example:
-        # "numpy>=1.20.0",
-        # "pandas>=1.3.0",
+        "numpy",       # Remove specific versions
+        "pandas",
+        "networkx",
+        "fastapi",
+        "requests",
     ],
-    author="Andrei Voicu Tomut ,Santiago Gimenez ,Alba ...(pleasse add youreself) ",
+    author="Andrei Voicu Tomut, Santiago Gimenez, Alba ..., [Your Name]",
     author_email="tomutvoicuandrei@gmail.com",
     description="A brief description of your networkx project",
     keywords="network, graph, analysis",

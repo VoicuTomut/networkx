@@ -3,7 +3,7 @@ Name: networkx
 Version: 0.1.0
 Summary: A brief description of your networkx project
 Home-page: https://github.com/VoicuTomut/networkx.git
-Author: Andrei Voicu Tomut ,Santiago Gimenez ,Alba ...(pleasse add youreself) 
+Author: Andrei Voicu Tomut, Santiago Gimenez, Alba ..., [Your Name]
 Author-email: tomutvoicuandrei@gmail.com
 Keywords: network,graph,analysis
 Classifier: Development Status :: 3 - Alpha
@@ -11,3 +11,8 @@ Classifier: Intended Audience :: Developers
 Classifier: Programming Language :: Python :: 3
 Classifier: Programming Language :: Python :: 3.9
 Requires-Python: >=3.6
+Requires-Dist: numpy
+Requires-Dist: pandas
+Requires-Dist: networkx
+Requires-Dist: fastapi
+Requires-Dist: requests
