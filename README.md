@@ -10,7 +10,7 @@ For a detailed walkthrough, check out our presentation on Canva:
 
  **PDF:**  [CheckPoint.pdf](https://github.com/VoicuTomut/networkx/blob/main/ChekPoint.pdf)
 
-📽 **Video:**  https://github.com/VoicuTomut/networkx/blob/main/Demovideo.mp4
+📽 **Video:** [video](https://github.com/VoicuTomut/networkx/blob/main/Demovideo.mp4)
 ---
 
 ## 📥 Installation
