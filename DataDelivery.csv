@@ -1,18 +1,18 @@
-OrderID,Location,Client_Phone,Status,Expected_Delivery_Time,Courier_Phone
-A123,"123 Main Street, New York, NY [40.7128, -74.0060]",555-123-4567,Courier in location!,2025-03-03 14:30:00,+40757796991
-B234,"456 Park Avenue, Boston, MA [42.3601, -71.0589]",555-234-5678,Delivered,2025-03-03 12:15:00,+40757796991
-C345,"789 Oak Drive, Chicago, IL [41.8781, -87.6298]",555-345-6789,Delivered,2025-03-03 16:45:00,+40757796991
-D456,"101 Pine Street, San Francisco, CA [37.7749, -122.4194]",555-456-7890,Delivered,2025-03-03 11:20:00,+40757796991
-E567,"202 Maple Road, Miami, FL [25.7617, -80.1918]",555-567-8901,Courier in location!,2025-03-03 15:10:00,+34669178704
-F678,"303 Cedar Lane, Seattle, WA [47.6062, -122.3321]",555-678-9012,Delivered,2025-03-03 10:45:00,+34669178704
-G789,"404 Elm Boulevard, Austin, TX [30.2672, -97.7431]",555-789-0123,On the way,2025-03-03 17:30:00,+34669178704
-H890,"505 Birch Court, Denver, CO [39.7392, -104.9903]",555-890-1234,Delivered,2025-03-03 09:55:00,777-888-9999
-I901,"606 Willow Way, Portland, OR [45.5051, -122.6750]",555-901-2345,On the way,2025-03-03 18:20:00,888-999-0000
-J012,"707 Spruce Path, Atlanta, GA [33.7490, -84.3880]",555-012-3456,Delivered,2025-03-03 13:40:00,999-000-1111
-K123,"808 Aspen Circle, Nashville, TN [36.1627, -86.7816]",555-123-4567,On the way,2025-03-03 19:15:00,777-888-9999
-L234,"909 Redwood Square, Philadelphia, PA [39.9526, -75.1652]",555-234-5678,Delivered,2025-03-03 12:30:00,888-999-0000
-M345,"111 Sequoia Heights, Las Vegas, NV [36.1699, -115.1398]",555-345-6789,On the way,2025-03-03 20:00:00,999-000-1111
-N456,"222 Cypress Gardens, New Orleans, LA [29.9511, -90.0715]",555-456-7890,Delivered,2025-03-03 11:50:00,777-888-9999
-O567,"333 Magnolia Terrace, Minneapolis, MN [44.9778, -93.2650]",555-567-8901,On the way,2025-03-03 16:25:00,888-999-0000
-P678,"444 Juniper Plaza, Phoenix, AZ [33.4484, -112.0740]",555-678-9012,Delivered,2025-03-03 10:10:00,999-000-1111
-Q789,"555 Sycamore Drive, Detroit, MI [42.3314, -83.0458]",555-789-0123,On the way,2025-03-03 17:50:00,777-888-9999
+OrderID,Location,Client_Phone,Status,Expected_Delivery_Time,Courier_Phone,Status_History
+A123,"123 Main Street, New York, NY [40.7128, -74.0060]",555-123-4567,On the way,2025-03-03 14:30:00,+40757796991,
+B234,"456 Park Avenue, Boston, MA [42.3601, -71.0589]",555-234-5678,On the way,2025-03-03 12:15:00,+40757796991,
+C345,"789 Oak Drive, Chicago, IL [41.8781, -87.6298]",555-345-6789,On the way,2025-03-03 16:45:00,+40757796991,
+D456,"101 Pine Street, San Francisco, CA [37.7749, -122.4194]",555-456-7890,On the way,2025-03-03 11:20:00,+40757796991,
+E567,"202 Maple Road, Miami, FL [25.7617, -80.1918]",555-567-8901,Courier in location!,2025-03-03 15:10:00,+34669178704,
+F678,"303 Cedar Lane, Seattle, WA [47.6062, -122.3321]",555-678-9012,Delivered,2025-03-03 10:45:00,+34669178704,
+G789,"404 Elm Boulevard, Austin, TX [30.2672, -97.7431]",555-789-0123,On the way,2025-03-03 17:30:00,+34669178704,
+H890,"505 Birch Court, Denver, CO [39.7392, -104.9903]",555-890-1234,Delivered,2025-03-03 09:55:00,777-888-9999,
+I901,"606 Willow Way, Portland, OR [45.5051, -122.6750]",555-901-2345,On the way,2025-03-03 18:20:00,888-999-0000,
+J012,"707 Spruce Path, Atlanta, GA [33.7490, -84.3880]",555-012-3456,Delivered,2025-03-03 13:40:00,999-000-1111,
+K123,"808 Aspen Circle, Nashville, TN [36.1627, -86.7816]",555-123-4567,On the way,2025-03-03 19:15:00,777-888-9999,
+L234,"909 Redwood Square, Philadelphia, PA [39.9526, -75.1652]",555-234-5678,Delivered,2025-03-03 12:30:00,888-999-0000,
+M345,"111 Sequoia Heights, Las Vegas, NV [36.1699, -115.1398]",555-345-6789,On the way,2025-03-03 20:00:00,999-000-1111,
+N456,"222 Cypress Gardens, New Orleans, LA [29.9511, -90.0715]",555-456-7890,Delivered,2025-03-03 11:50:00,777-888-9999,
+O567,"333 Magnolia Terrace, Minneapolis, MN [44.9778, -93.2650]",555-567-8901,On the way,2025-03-03 16:25:00,888-999-0000,
+P678,"444 Juniper Plaza, Phoenix, AZ [33.4484, -112.0740]",555-678-9012,Delivered,2025-03-03 10:10:00,999-000-1111,
+Q789,"555 Sycamore Drive, Detroit, MI [42.3314, -83.0458]",555-789-0123,On the way,2025-03-03 17:50:00,777-888-9999,

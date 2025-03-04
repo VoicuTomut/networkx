@@ -1,4 +1,5 @@
 import requests
+import urllib.parse
 
 APIK="3aa9d376cfmsh16446717213dd03p1e3dfdjsn0c3cc2207d6f"
 
@@ -37,7 +38,7 @@ def get_confirm_link(
         login_hint,
         redirect_uri,
         response_type="code",
-        scope="number-verification:verify",
+        scope="dpv:FraudPreventionAndDetection%23number-verifcation-verify-read",
         state="c3VwZXItc2VjcmV0"
 ):
     """
@@ -59,7 +60,12 @@ def get_confirm_link(
         str: The full authorization URL that should be presented to the user
     """
     # Create the direct URL that will initiate the Nokia authorization flow
-    auth_link = f"{authorization_endpoint}?scope={scope}&state={state}&response_type={response_type}&client_id={client_id}&redirect_uri={redirect_uri}&login_hint={login_hint}"
+
+    encoded_login_hint = urllib.parse.quote(login_hint)
+    state = encoded_login_hint
+
+    # Create the direct URL that will initiate the Nokia authorization flow
+    auth_link = f"{authorization_endpoint}?scope={scope}&state={state}&response_type={response_type}&client_id={client_id}&redirect_uri={redirect_uri}&login_hint={encoded_login_hint}"
 
     return auth_link
 
@@ -124,14 +130,14 @@ def main():
                                         login_hint,
                                         redirect_uri,
                                         response_type="code",
-                                        scope="number-verification:verify",
-                                        state="c3VwZXItc2VjcmV0"
+
                                 )
 
 
 
+        print("authorization link: {}".format(auth_link))
 
-        auth_code = input("Enter the received authorization code from the redirect URL: ")
+        auth_code = input("Enter the received authorization code from the redirect URL: ", )
 
         if auth_code:
             access_token = get_access_token(client_id, client_secret, auth_code)

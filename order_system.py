@@ -1,6 +1,8 @@
 import gradio as gr
 import pandas as pd
 import numpy as np
+import hashlib
+
 from networkx import  qr_confirm, extract_location_coordinates, check_coordinates
 
 #Ge the delivery database:
@@ -16,7 +18,46 @@ deliveries_df = deliveries_df.rename(columns={
 })
 
 
+def owner_check(order_id, owner_code):
+    """
+    Validates if the provided owner_code matches the expected code for the given order_id.
 
+    Parameters:
+    order_id (str): The ID of the order to check
+    owner_code (str): The code provided by the user claiming ownership
+
+    Returns:
+    str: Status message indicating whether delivery is authorized
+    """
+    # Define database file path
+    DBFILE = "DataDelivery.csv"
+
+    try:
+        # Read the CSV file
+        df = pd.read_csv(DBFILE)
+
+        # Find the order in the database
+        order_data = df[df['Order_ID'] == order_id]
+
+        # Check if order exists
+        if order_data.empty:
+            return "Error: Order not found"
+
+        # Get client phone number from the order
+        client_phone = order_data.iloc[0]['Client_Phone']
+
+        # Generate expected owner code by hashing the phone number
+        # This assumes owner_code is a hash or function of the phone number
+        expected_code = hashlib.md5(str(client_phone).encode()).hexdigest()[:8]
+
+        # Validate the owner code
+        if owner_code == expected_code:
+            return "Delivery Authorized: Owner verified"
+        else:
+            return "Error: Invalid owner code"
+
+    except Exception as e:
+        return f"System Error: {str(e)}"
 
 
 # Update the delivery data base by user:
@@ -87,24 +128,33 @@ def deliver(order_id):
     # Check if the currier is at the location
     status=courier_in_location(phone_number_courier,location)
     print(f"---{status=}")
-    updated_status = "Courier in location!"
+    if status and current_status in ["On the way"] :
+        updated_status = "Courier in location!"
+    else:
+        if current_status not in ["Delivered"]:
+            updated_status = "On the way"
+        else:
+            updated_status=status
 
 
     # Update the status in the CSV file
     df.loc[df['OrderID'] == order_id, 'Status'] = updated_status
+    #df.loc[df['OrderID'] == order_id, 'Status_History'] += f";{updated_status} "
     df.to_csv(DBFILE, index=False)
 
     # Generate QR code using the external function (not implemented here)
     location= df.loc[df['OrderID'] == order_id, 'Location'].values[0]
     qr_code = qr_confirm(client_phone,location )
+    delivery_status_history=None
 
-    return location, client_phone, updated_status, qr_code
+
+    return location, client_phone, updated_status, qr_code,  delivery_status_history
 
 
 
 # Define the Gradio interface
 with gr.Blocks(title="Order Management System") as app:
-    gr.Markdown("# Order Management System")
+    gr.Markdown("# Chek Point")
 
     with gr.Tabs():
         # First Tab - Order Management
@@ -124,13 +174,22 @@ with gr.Blocks(title="Order Management System") as app:
                 phone_number_client = gr.Textbox(label="Phone Number Client:",placeholder="Phone Number")
                 delivery_status = gr.Textbox(placeholder="InProcess", label="Status")
                 deliver_button = gr.Button("Deliver")
+                
+                owner_code = gr.Textbox(placeholder="Owner code:", label="Code")
+                deliver_check_button = gr.Button("Check  Code!")
+
                 checkQR =gr.Image(
                 label="Scan QR Code",
                 type="numpy",)
+                # delivery_status_history = gr.Textbox(placeholder="InProcess", label="Status history")
 
-
-            deliver_button.click(fn=deliver, inputs=[order_id], outputs=[order_location, phone_number_client, delivery_status, checkQR])
+            deliver_button.click(fn=deliver, inputs=[order_id], outputs=[order_location, phone_number_client, delivery_status, checkQR, ])
             get_delivery_list.click(fn=filter_by_courier, inputs=[phone_number_courier], outputs=[deliveries_table])
+
+
+            deliver_check_button.click(fn=owner_check, inputs=[order_id, owner_code], outputs=[delivery_status])
+
+
 
 
         # Second Tab - Delivery Confirmation
@@ -169,4 +228,4 @@ with gr.Blocks(title="Order Management System") as app:
             pass
 
 if __name__ == "__main__":
-    app.launch()
+    app.launch(share=True)
